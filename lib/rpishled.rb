@@ -5,4 +5,6 @@ end
 
   version
 
+  detect
+
 ).each { |m| require "rpishled/#{m}" }
