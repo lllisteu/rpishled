@@ -1,9 +1,11 @@
-class Rpishled
+class Rpishled < File
 end
 
 %w(
 
   version
+
+  base
 
   detect
 
