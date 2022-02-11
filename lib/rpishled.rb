@@ -9,4 +9,6 @@ end
 
   detect
 
+  gamma
+
 ).each { |m| require "rpishled/#{m}" }
