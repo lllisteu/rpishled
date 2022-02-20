@@ -11,4 +11,6 @@ end
 
   gamma
 
+  framebuffer
+
 ).each { |m| require "rpishled/#{m}" }
