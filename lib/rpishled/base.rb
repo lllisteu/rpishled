@@ -16,8 +16,7 @@ class Rpishled
 
   # Clears the LED matrix.
   def clear
-    rewind
-    write "\x00" * 128
+    raw  "\x00" * 128
   end
 
 end
