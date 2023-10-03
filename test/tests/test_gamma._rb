@@ -1,0 +1,49 @@
+require 'test/unit'
+
+require 'rpishled'
+
+Rpishled.new or exit
+
+class Test_gamma < Test::Unit::TestCase
+
+  def test_get_gamma_lookup_table
+    l = Rpishled.new
+    assert_equal 32, l.gamma_lookup_table.size
+  end
+
+  def test_set_gamma_lookup_table
+    l = Rpishled.new
+    assert l.gamma_lookup_table = (0..31).to_a
+  end
+
+  def test_user_gamma
+    l = Rpishled.new
+    table = (0..31).to_a.shuffle
+
+    l.gamma_lookup_table = table
+    assert_equal table, l.gamma_lookup_table
+
+    l.gamma_reset
+    l.gamma_user
+    assert_equal table, l.gamma_lookup_table
+  end
+
+  def test_gamma_low_light
+    l = Rpishled.new
+    l.gamma_low_light
+    assert_true l.gamma_lookup_table.max < 11
+  end
+
+  def test_gamma_reset
+    l = Rpishled.new
+    l.gamma_reset
+    assert_equal [0, 0, 0], l.gamma_lookup_table[0,3]
+  end
+
+  def test_gamma_linear
+    l = Rpishled.new
+    l.gamma_linear
+    assert_equal (0..31).to_a, l.gamma_lookup_table
+  end
+
+end
